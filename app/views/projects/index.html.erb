@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h2><b>SIMPLE TODO LIST</b>
+  <p><small>FROM RUBY GARAGE</small></h2></p>
+</div>
+
+<div class="row">
+  <div class='col-md-8 col-md-offset-2' id="projects">
+    <%= render @projects %>
+  </div>
+</div>
+<div class="row">
+  <div class='col-md-offset-5 col-md-2'>
+    <%= link_to 'Add TODO List ', new_project_path, remote: true, class: 'btn btn-primary btn-block' %>
+  </div>
+</div>

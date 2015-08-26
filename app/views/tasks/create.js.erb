@@ -1,0 +1,4 @@
+$('#<%= dom_id(@task.project)%> div.input-group').removeClass('has-error')
+$('#<%= dom_id(@task.project)%> div.input-group').parents('form').next().hide();
+$('#<%= dom_id(@task.project) %> ul').append('<%=j render @task %>');
+$('#<%= dom_id(@task.project) %> input#task_title').val('');

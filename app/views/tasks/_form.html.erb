@@ -1,0 +1,23 @@
+<li class="list-group-item" id="<%= dom_id(@task, :edit)%>">
+  <%= form_for @task, url: project_task_path(@task.project, @task), remote: true do |f| %>
+  <div class="row">
+    <div class="col-md-11 col-md-offset-1">
+      <div class="form-group">
+        <%= f.text_field :title, class: 'form-control'%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 col-md-offset-1">
+      <div class="form-group">
+        <%= f.text_area :comment, row: 3, class: 'form-control', placeholder: "Any comment for task" %>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <%= f.button 'Save', class: "btn btn-md", remote: true, toggle: "tooltip", placement: "top", title: 'Save task' do %>
+      <span class="glyphicon glyphicon-ok"></span>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</li>

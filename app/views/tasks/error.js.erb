@@ -1,0 +1,6 @@
+var input_form = $('#<%= dom_id(@task.project)%> div.input-group');
+
+input_form.addClass('has-error');
+input_form.parents('form').next().show();
+input_form.parents('form').next().html('<%= @task.errors.full_messages.first %>');
+alert ('error');

@@ -1,0 +1,13 @@
+var form = $('#projects li form.edit_task').parent()
+    task = $("#<%= dom_id(@task)%>")
+
+if (form.length != 0 ) {
+  form.prev().show();
+  form.replaceWith('');
+  task.hide();
+  task.after("<%=j render 'form' %>");
+} else {
+
+  task.hide();
+  task.after("<%=j render 'form' %>");
+}

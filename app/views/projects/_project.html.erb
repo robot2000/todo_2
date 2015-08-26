@@ -1,0 +1,58 @@
+<div class="panel panel-primary" id="<%= dom_id(project)%>">
+  <div class="row">
+    <div class="panel-heading">
+      <div class="col-md-1">
+        <span class="glyphicon glyphicon-calendar img-block" aria-hidden="true"></span>
+      </div>
+      <div class="title-project">
+        <div class="col-md-8">
+          <%= label project, project.title %>
+        </div>
+        <div class="col-md-1">
+          <%= link_to [:edit, project], class: "btn btn-md", remote: true, toggle: "tooltip", placement: "top", title: 'Edit' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+        </div>
+      </div>
+      <div class="edit-project", style="display: none;">
+        <%= form_for project, remote: true do |f| %>
+        <div class="col-md-8">
+          <%= f.text_field :title, class: "form-control", plaseholder: 'Enter title for project' %>
+        </div>
+        <div class="col-md-1">
+          <%= f.submit [project], remote: true, class: "btn btn-inverse btn-md", toggle: "modal", target: 'myModal', placement: "top", title: 'Save project' do %>
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to [project], method: :delete, remote: true, class: "btn btn-inverse btn-md" do %>
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel-body" >
+      <%= form_for project.tasks.build, url: project_tasks_path(project), remote: true, class: 'form-inline' do |f| %>
+      <div class="col-sm-1">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </div>
+      <div class="col-md-11">
+        <div class="input-group">
+          <%= f.text_field :title, class: 'form-control', placeholder: 'Start typing here to create a task...' %>
+          <span class='input-group-btn'>
+            <%= f.submit 'Add Task', class: 'btn btn-success' %>
+          </span>
+        </div>
+      </div>
+      <% end %>
+      <div class="row" style="display: none;" id="errors">
+      </div>
+    </div>
+  </div>
+  <ul class="list-group" >
+    <%= render project.tasks.select(&:persisted?) %>
+  </ul>
+</div>

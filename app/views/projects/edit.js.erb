@@ -1,0 +1,18 @@
+var project = $("#<%= dom_id(@project) %> div.title-project")
+    visible_form = [];
+
+$("div.edit-project").each( function (index) {
+  if ($(this).is(":visible")) {
+    visible_form.push( $(this) )
+  }
+});
+
+if (visible_form.length > 0) {
+  visible_form[0].prev().show();
+  visible_form[0].hide();
+  project.hide();
+  project.next().show();
+} else {
+  project.hide();
+  project.next().show();
+}

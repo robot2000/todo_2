@@ -1,0 +1,4 @@
+var task = $("#<%= dom_id(@task) %>")
+
+$('li form.edit_task').parent().replaceWith('');
+task.replaceWith("<%=j render @task %>");
